@@ -3,53 +3,55 @@ import { Users, Package, ShoppingCart, Megaphone, LayoutDashboard, Code, ArrowRi
 import { FeatureItem } from '../types';
 import { motion } from 'framer-motion';
 
-const features: FeatureItem[] = [
+interface BentoFeatureItem extends FeatureItem {
+  className?: string;
+  bgGradient?: string;
+}
+
+const features: BentoFeatureItem[] = [
   {
     title: 'Smart Customer Insights',
-    description: 'Turn casual browsers into loyal customers with deep data tracking and relationship management.',
+    description: 'Turn casual browsers into loyal customers. Our CRM automatically tracks preferences, purchase history, and interactions to build detailed customer profiles without lifting a finger.',
     icon: Users,
+    className: "md:col-span-2",
+    bgGradient: "from-blue-500/10 to-cyan-500/10"
   },
   {
-    title: 'Effortless Inventory Control',
-    description: 'Never miss a sale with real-time stock synchronization across all your warehouses and channels.',
+    title: 'Effortless Inventory',
+    description: 'Real-time stock sync across all warehouses and channels. Never oversell again.',
     icon: Package,
+    className: "md:col-span-1",
+    bgGradient: "from-emerald-500/10 to-teal-500/10"
   },
   {
-    title: 'Streamlined Order Fulfillment',
+    title: 'Streamlined Fulfillment',
     description: 'Automate your entire order lifecycle from checkout to doorstep delivery to save time.',
     icon: ShoppingCart,
+    className: "md:col-span-1",
+    bgGradient: "from-orange-500/10 to-amber-500/10"
   },
   {
-    title: 'Targeted Marketing Campaigns',
-    description: 'Launch data-driven marketing blasts that reach customers on the channels they use most.',
+    title: 'Targeted Marketing',
+    description: 'Launch data-driven campaigns via SMS, Email, and WhatsApp directly from your dashboard. Reach the right people at the right time.',
     icon: Megaphone,
+    className: "md:col-span-2",
+    bgGradient: "from-pink-500/10 to-rose-500/10"
   },
   {
-    title: 'Centralized Business Command',
-    description: 'Manage staff, set permissions, and view critical analytics from one powerful admin dashboard.',
+    title: 'Business Command Center',
+    description: 'One powerful admin dashboard to manage staff, view analytics, and control your empire.',
     icon: LayoutDashboard,
+    className: "md:col-span-3 lg:col-span-1", 
+    bgGradient: "from-violet-500/10 to-purple-500/10"
   },
   {
-    title: 'Seamless API Integration',
-    description: 'Connect your existing website and third-party tools instantly with our developer-friendly APIs.',
+    title: 'Developer API',
+    description: 'Built for scale. Connect your existing ERP, custom storefronts, or third-party tools seamlessly.',
     icon: Code,
+    className: "md:col-span-3 lg:col-span-2",
+    bgGradient: "from-slate-500/10 to-gray-500/10"
   },
 ];
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 }
-};
 
 export const Features: React.FC = () => {
   return (
@@ -62,7 +64,7 @@ export const Features: React.FC = () => {
         <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-[500px] h-[500px] bg-boost-accent/5 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.div 
              initial={{ opacity: 0, scale: 0.9 }}
              whileInView={{ opacity: 1, scale: 1 }}
@@ -81,9 +83,9 @@ export const Features: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight"
           >
-            Power-packed features for <br/>
+            Everything you need to <br/>
             <span className="relative inline-block">
-               <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-boost-teal to-boost-accentHover">modern businesses</span>
+               <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-boost-teal to-boost-accentHover">scale smarter</span>
                <span className="absolute bottom-2 left-0 w-full h-3 bg-boost-accent/20 -z-0 rounded-sm transform -rotate-1"></span>
             </span>
           </motion.h2>
@@ -95,54 +97,43 @@ export const Features: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg text-slate-600 leading-relaxed"
           >
-            We've distilled the most complex business operations into an intuitive suite of tools. 
-            Manage everything from a single dashboard.
+            Replace your fragmented toolset with one cohesive operating system.
           </motion.p>
         </div>
 
-        <motion.div 
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {features.map((feature, index) => (
-            <motion.div 
-              key={index} 
-              variants={item}
-              className="group relative bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(250px,auto)]">
+          {features.map((feature, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              whileHover={{ y: -5 }}
+              className={`group relative bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between ${feature.className}`}
             >
-              {/* Card Hover Gradient Border Effect */}
-              <div className="absolute inset-0 border-2 border-transparent group-hover:border-boost-accent/20 rounded-[2rem] transition-colors duration-300 pointer-events-none"></div>
-              
-              {/* Icon */}
-              <div className="relative w-14 h-14 mb-6">
-                 <div className="absolute inset-0 bg-boost-teal/5 rounded-2xl group-hover:scale-110 transition-transform duration-300"></div>
-                 <div className="absolute inset-0 flex items-center justify-center">
-                    <feature.icon className="w-7 h-7 text-boost-teal group-hover:text-boost-accent transition-colors duration-300" />
-                 </div>
-              </div>
-              
-              {/* Content */}
-              <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-boost-teal transition-colors">
-                {feature.title}
-              </h3>
-              <p className="text-slate-500 leading-relaxed text-sm md:text-base mb-6">
-                {feature.description}
-              </p>
+              {/* Card Background Gradient */}
+              <div className={`absolute top-0 right-0 w-48 h-48 bg-gradient-to-br ${feature.bgGradient} rounded-bl-[100px] -mr-10 -mt-10 transition-transform duration-500 group-hover:scale-110`}></div>
 
-              {/* Learn More Link (appears on hover) */}
-              <div className="flex items-center text-boost-accent font-semibold text-sm opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                <span>Learn more</span>
-                <ArrowRight size={16} className="ml-2" />
+              <div className="relative z-10">
+                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-6 bg-slate-50 group-hover:bg-boost-light transition-colors duration-300`}>
+                  <feature.icon className="text-boost-teal group-hover:text-boost-teal transition-colors duration-300" size={24} />
+                </div>
+                
+                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-boost-teal transition-colors">{feature.title}</h3>
+                <p className="text-slate-600 leading-relaxed text-sm md:text-base">
+                  {feature.description}
+                </p>
               </div>
-              
-              {/* Decorational Corner Blob */}
-              <div className="absolute -bottom-8 -right-8 w-24 h-24 bg-gradient-to-br from-boost-light to-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+
+              <div className="relative z-10 mt-6 pt-6 border-t border-slate-50 flex items-center text-sm font-semibold text-boost-teal opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                Learn more <ArrowRight size={16} className="ml-2" />
+              </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
+
       </div>
     </section>
   );

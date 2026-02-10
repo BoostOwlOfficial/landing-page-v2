@@ -51,11 +51,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-4 text-gray-400 text-sm">
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-boost-accent" />
-                <span>support@boostowl.com</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone size={16} className="text-boost-accent" />
-                <span>+91 98765 43210</span>
+                <span>admin@boostowl.io</span>
               </li>
               <li className="text-xs text-gray-500 mt-4">
                 Bangalore, India
