@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Logo } from './Logo';
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone } from 'lucide-react';
 
@@ -10,7 +11,9 @@ export const Footer: React.FC = () => {
           
           {/* Brand Column */}
           <div>
-            <Logo className="h-8 mb-6" variant="light" />
+            <Link to="/" className="inline-block mb-6">
+              <Logo className="h-8" variant="light" />
+            </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               BoostOwl helps businesses streamline operations and connect with customers through smart technology and seamless automation.
             </p>
@@ -26,11 +29,11 @@ export const Footer: React.FC = () => {
           <div>
             <h4 className="text-lg font-bold mb-6">Product</h4>
             <ul className="space-y-3 text-gray-400 text-sm">
-              <li><a href="#" className="hover:text-boost-accent transition-colors">CRM Features</a></li>
-              <li><a href="#" className="hover:text-boost-accent transition-colors">Inventory Management</a></li>
-              <li><a href="#" className="hover:text-boost-accent transition-colors">WhatsApp Chatbot</a></li>
+              <li><Link to="/#features" className="hover:text-boost-accent transition-colors">CRM Features</Link></li>
+              <li><Link to="/#inventory" className="hover:text-boost-accent transition-colors">Inventory Management</Link></li>
+              <li><Link to="/#chatbot" className="hover:text-boost-accent transition-colors">WhatsApp Chatbot</Link></li>
               <li><a href="#" className="hover:text-boost-accent transition-colors">API Documentation</a></li>
-              <li><a href="#" className="hover:text-boost-accent transition-colors">Pricing</a></li>
+              <li><Link to="/#pricing" className="hover:text-boost-accent transition-colors">Pricing</Link></li>
             </ul>
           </div>
 
@@ -38,10 +41,12 @@ export const Footer: React.FC = () => {
           <div>
             <h4 className="text-lg font-bold mb-6">Company</h4>
             <ul className="space-y-3 text-gray-400 text-sm">
-              <li><a href="#" className="hover:text-boost-accent transition-colors">About Us</a></li>
+              <li><Link to="/#about" className="hover:text-boost-accent transition-colors">About Us</Link></li>
               <li><a href="#" className="hover:text-boost-accent transition-colors">Careers</a></li>
               <li><a href="#" className="hover:text-boost-accent transition-colors">Blog</a></li>
-              <li><a href="#" className="hover:text-boost-accent transition-colors">Legal & Privacy</a></li>
+              <li><Link to="/privacy-policy" className="hover:text-boost-accent transition-colors">Privacy Policy</Link></li>
+              <li><Link to="/terms-of-usage" className="hover:text-boost-accent transition-colors">Terms of Usage</Link></li>
+              <li><Link to="/data-deletion" className="hover:text-boost-accent transition-colors">Data Deletion</Link></li>
             </ul>
           </div>
 
