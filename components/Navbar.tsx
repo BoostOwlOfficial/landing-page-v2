@@ -49,6 +49,12 @@ export const Navbar: React.FC = () => {
                 {item.label}
               </Link>
             ))}
+            <a
+              href="/boostowl-blog-ai-automation.html"
+              className="text-gray-300 hover:text-boost-accent transition-colors font-medium text-sm uppercase tracking-wider cursor-pointer"
+            >
+              Blog
+            </a>
             <Link to="/get-started" className="inline-flex items-center gap-2 bg-boost-accent text-boost-dark px-6 py-2.5 rounded-full font-bold hover:bg-boost-accentHover transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(0,223,162,0.4)]">
               Get Started <ArrowRight className="w-4 h-4" />
             </Link>
@@ -80,6 +86,13 @@ export const Navbar: React.FC = () => {
                 {item.label}
               </Link>
             ))}
+            <a
+              href="/boostowl-blog-ai-automation.html"
+              onClick={() => setIsOpen(false)}
+              className="block px-3 py-3 text-base font-medium text-white hover:bg-white/10 rounded-md"
+            >
+              Blog
+            </a>
             <Link to="/get-started" className="w-full mt-4 block text-center bg-boost-accent text-boost-dark px-6 py-3 rounded-lg font-bold hover:bg-boost-accentHover" onClick={() => setIsOpen(false)}>
               Get Started
             </Link>
